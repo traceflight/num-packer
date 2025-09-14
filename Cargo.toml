@@ -8,7 +8,7 @@ readme = "README.md"
 documentation = "https://docs.rs/num-packer/"
 repository = "https://github.com/traceflight/num-packer"
 keywords = ["number", "pack", "packer", "num"]
-categories = ["data-structures", "encoding"]
+categories = ["data-structures", "encoding", "no-std"]
 license = "MIT OR Apache-2.0"
 
 [dependencies]

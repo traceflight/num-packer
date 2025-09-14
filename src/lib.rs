@@ -9,6 +9,7 @@
 //! * Pack two `i8` into `u16`/`i16`, `u32`/`i32`, `u64`/`i64`, `usize`/`isize`
 //! * Pack two `i16` into `u32`/`i32`, `u64`/`i64`, `usize`/`isize`(if target pointer width is 32 or 64)
 //! * Pack two `i32` into `u64`/`i64`, `usize`/`isize`(if target pointer width is 64)
+//! * Pack two `f32` into `u64`/`i64`, `usize`/`isize`(if target pointer width is 64)
 //!
 //! ## Example
 //!
@@ -22,6 +23,8 @@
 //! assert_eq!((first, second), (200, 55));
 //! ```
 //!
+
+#![no_std]
 
 mod impls;
 mod packer;

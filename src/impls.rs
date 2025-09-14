@@ -1,4 +1,6 @@
-use crate::{BoolPacker, I8Packer, I16Packer, I32Packer, U8Packer, U16Packer, U32Packer};
+use crate::{
+    BoolPacker, F32Packer, I8Packer, I16Packer, I32Packer, U8Packer, U16Packer, U32Packer,
+};
 
 macro_rules! impl_bool_packer_for_num {
     ($t:ty) => {
@@ -176,3 +178,28 @@ impl_i32_packer_for_num!(usize);
 impl_i32_packer_for_num!(i64);
 #[cfg(target_pointer_width = "64")]
 impl_i32_packer_for_num!(isize);
+
+macro_rules! impl_f32_packer_for_num {
+    ($t:ty) => {
+        impl F32Packer for $t {
+            fn pack_f32(first: f32, second: f32) -> Self {
+                let first_u = first.to_bits() as $t;
+                let second_u = second.to_bits() as $t;
+                (first_u << 32) | second_u
+            }
+
+            fn unpack_f32(&self) -> (f32, f32) {
+                let first = ((self >> 32) & 0xFFFFFFFF) as u32;
+                let second = (self & 0xFFFFFFFF) as u32;
+                (f32::from_bits(first), f32::from_bits(second))
+            }
+        }
+    };
+}
+
+impl_f32_packer_for_num!(u64);
+#[cfg(target_pointer_width = "64")]
+impl_f32_packer_for_num!(usize);
+impl_f32_packer_for_num!(i64);
+#[cfg(target_pointer_width = "64")]
+impl_f32_packer_for_num!(isize);

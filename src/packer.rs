@@ -179,3 +179,28 @@ pub trait I32Packer {
     /// ```
     fn unpack_i32(&self) -> (i32, i32);
 }
+
+/// Trait for packing and unpacking two `f32` values into a single value.
+pub trait F32Packer {
+    /// Packs two `f32` values into a single value of the implementing type.
+    ///
+    /// # Example
+    ///
+    /// ```rust
+    /// use num_packer::F32Packer;
+    /// let packed = u64::pack_f32(1.5, -2.5);
+    /// ```
+    fn pack_f32(first: f32, second: f32) -> Self;
+
+    /// Unpacks the single value back into two `f32` values.
+    ///
+    /// # Example
+    ///
+    /// ```rust
+    /// use num_packer::F32Packer;
+    /// let packed = u64::pack_f32(1.5, -2.5);
+    /// let (first, second) = packed.unpack_f32();
+    /// assert_eq!((first, second), (1.5, -2.5));
+    /// ```
+    fn unpack_f32(&self) -> (f32, f32);
+}
