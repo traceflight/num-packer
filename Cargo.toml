@@ -1,6 +1,6 @@
 [package]
 name = "num-packer"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 authors = ["Julian Wang <traceflight@outlook.com>"]
 description = "Provides traits and implementations for packing and unpacking two numbers into a single value."
