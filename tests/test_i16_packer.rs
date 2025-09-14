@@ -51,7 +51,7 @@ fn test_i16_packer_i32() {
 }
 
 #[test]
-fn test_i16_packer_i32_min() {
+fn test_i16_packer_i32_zero() {
     let packed = i32::pack_i16(0, 0);
     let (first, second) = packed.unpack_i16();
     assert_eq!((first, second), (0, 0));
