@@ -3,6 +3,8 @@ use num_packer::F32Packer;
 #[test]
 fn test_f32_packer_u64() {
     let packed = u64::pack_f32(1.5, -2.5);
+    assert_eq!(packed.first_f32(), 1.5);
+    assert_eq!(packed.second_f32(), -2.5);
     let (first, second) = packed.unpack_f32();
     assert_eq!((first, second), (1.5, -2.5));
 }
@@ -10,6 +12,8 @@ fn test_f32_packer_u64() {
 #[test]
 fn test_f32_packer_u64_zero() {
     let packed = u64::pack_f32(0.0, 0.0);
+    assert_eq!(packed.first_f32(), 0.0);
+    assert_eq!(packed.second_f32(), 0.0);
     let (first, second) = packed.unpack_f32();
     assert_eq!((first, second), (0.0, 0.0));
 }
@@ -17,6 +21,8 @@ fn test_f32_packer_u64_zero() {
 #[test]
 fn test_f32_packer_u64_max() {
     let packed = u64::pack_f32(f32::MAX, f32::MAX);
+    assert_eq!(packed.first_f32(), f32::MAX);
+    assert_eq!(packed.second_f32(), f32::MAX);
     let (first, second) = packed.unpack_f32();
     assert_eq!((first, second), (f32::MAX, f32::MAX));
 }
@@ -24,6 +30,8 @@ fn test_f32_packer_u64_max() {
 #[test]
 fn test_f32_packer_u64_min() {
     let packed = u64::pack_f32(f32::MIN, f32::MIN);
+    assert_eq!(packed.first_f32(), f32::MIN);
+    assert_eq!(packed.second_f32(), f32::MIN);
     let (first, second) = packed.unpack_f32();
     assert_eq!((first, second), (f32::MIN, f32::MIN));
 }
@@ -31,6 +39,8 @@ fn test_f32_packer_u64_min() {
 #[test]
 fn test_f32_packer_i64() {
     let packed = i64::pack_f32(1.5, -2.5);
+    assert_eq!(packed.first_f32(), 1.5);
+    assert_eq!(packed.second_f32(), -2.5);
     let (first, second) = packed.unpack_f32();
     assert_eq!((first, second), (1.5, -2.5));
 }
@@ -39,6 +49,8 @@ fn test_f32_packer_i64() {
 #[test]
 fn test_f32_packer_usize() {
     let packed = usize::pack_f32(1.5, -2.5);
+    assert_eq!(packed.first_f32(), 1.5);
+    assert_eq!(packed.second_f32(), -2.5);
     let (first, second) = packed.unpack_f32();
     assert_eq!((first, second), (1.5, -2.5));
 }
@@ -47,6 +59,8 @@ fn test_f32_packer_usize() {
 #[test]
 fn test_f32_packer_isize() {
     let packed = isize::pack_f32(1.5, -2.5);
+    assert_eq!(packed.first_f32(), 1.5);
+    assert_eq!(packed.second_f32(), -2.5);
     let (first, second) = packed.unpack_f32();
     assert_eq!((first, second), (1.5, -2.5));
 }

@@ -9,8 +9,12 @@ macro_rules! impl_bool_packer_for_num {
                 ((first as $t) << 1) | (second as $t)
             }
 
-            fn unpack_bool(&self) -> (bool, bool) {
-                ((self & 0b10) != 0, (self & 0b01) != 0)
+            fn first_bool(&self) -> bool {
+                (self & 0b10) != 0
+            }
+
+            fn second_bool(&self) -> bool {
+                (self & 0b01) != 0
             }
         }
     };
@@ -35,8 +39,12 @@ macro_rules! impl_u8_packer_for_num {
                 ((first as $t) << 8) | (second as $t)
             }
 
-            fn unpack_u8(&self) -> (u8, u8) {
-                (((self >> 8) & 0xFF) as u8, (self & 0xFF) as u8)
+            fn first_u8(&self) -> u8 {
+                ((self >> 8) & 0xFF) as u8
+            }
+
+            fn second_u8(&self) -> u8 {
+                (self & 0xFF) as u8
             }
         }
     };
@@ -59,8 +67,12 @@ macro_rules! impl_u16_packer_for_num {
                 ((first as $t) << 16) | (second as $t)
             }
 
-            fn unpack_u16(&self) -> (u16, u16) {
-                (((self >> 16) & 0xFFFF) as u16, (self & 0xFFFF) as u16)
+            fn first_u16(&self) -> u16 {
+                ((self >> 16) & 0xFFFF) as u16
+            }
+
+            fn second_u16(&self) -> u16 {
+                (self & 0xFFFF) as u16
             }
         }
     };
@@ -83,11 +95,12 @@ macro_rules! impl_u32_packer_for_num {
                 ((first as $t) << 32) | (second as $t)
             }
 
-            fn unpack_u32(&self) -> (u32, u32) {
-                (
-                    ((self >> 32) & 0xFFFFFFFF) as u32,
-                    (self & 0xFFFFFFFF) as u32,
-                )
+            fn first_u32(&self) -> u32 {
+                ((self >> 32) & 0xFFFFFFFF) as u32
+            }
+
+            fn second_u32(&self) -> u32 {
+                (self & 0xFFFFFFFF) as u32
             }
         }
     };
@@ -109,10 +122,12 @@ macro_rules! impl_i8_packer_for_num {
                 (first_u << 8) | second_u
             }
 
-            fn unpack_i8(&self) -> (i8, i8) {
-                let first = ((self >> 8) & 0xFF) as u8 as i8;
-                let second = (self & 0xFF) as u8 as i8;
-                (first, second)
+            fn first_i8(&self) -> i8 {
+                ((self >> 8) & 0xFF) as u8 as i8
+            }
+
+            fn second_i8(&self) -> i8 {
+                (self & 0xFF) as u8 as i8
             }
         }
     };
@@ -136,10 +151,12 @@ macro_rules! impl_i16_packer_for_num {
                 (first_u << 16) | second_u
             }
 
-            fn unpack_i16(&self) -> (i16, i16) {
-                let first = ((self >> 16) & 0xFFFF) as u16 as i16;
-                let second = (self & 0xFFFF) as u16 as i16;
-                (first, second)
+            fn first_i16(&self) -> i16 {
+                ((self >> 16) & 0xFFFF) as u16 as i16
+            }
+
+            fn second_i16(&self) -> i16 {
+                (self & 0xFFFF) as u16 as i16
             }
         }
     };
@@ -163,10 +180,12 @@ macro_rules! impl_i32_packer_for_num {
                 (first_u << 32) | second_u
             }
 
-            fn unpack_i32(&self) -> (i32, i32) {
-                let first = ((self >> 32) & 0xFFFFFFFF) as u32 as i32;
-                let second = (self & 0xFFFFFFFF) as u32 as i32;
-                (first, second)
+            fn first_i32(&self) -> i32 {
+                ((self >> 32) & 0xFFFFFFFF) as u32 as i32
+            }
+
+            fn second_i32(&self) -> i32 {
+                (self & 0xFFFFFFFF) as u32 as i32
             }
         }
     };
@@ -188,10 +207,14 @@ macro_rules! impl_f32_packer_for_num {
                 (first_u << 32) | second_u
             }
 
-            fn unpack_f32(&self) -> (f32, f32) {
+            fn first_f32(&self) -> f32 {
                 let first = ((self >> 32) & 0xFFFFFFFF) as u32;
+                f32::from_bits(first)
+            }
+
+            fn second_f32(&self) -> f32 {
                 let second = (self & 0xFFFFFFFF) as u32;
-                (f32::from_bits(first), f32::from_bits(second))
+                f32::from_bits(second)
             }
         }
     };

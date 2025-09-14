@@ -4,6 +4,8 @@ use num_packer::BoolPacker;
 fn test_bool_packer_u8() {
     let packed = u8::pack_bool(true, false);
     assert_eq!(packed, 0b10);
+    assert_eq!(packed.first_bool(), true);
+    assert_eq!(packed.second_bool(), false);
     let (first, second) = packed.unpack_bool();
     assert_eq!((first, second), (true, false));
 }
@@ -12,6 +14,8 @@ fn test_bool_packer_u8() {
 fn test_bool_packer_u8_all_true() {
     let packed = u8::pack_bool(true, true);
     assert_eq!(packed, 0b11);
+    assert_eq!(packed.first_bool(), true);
+    assert_eq!(packed.second_bool(), true);
     let (first, second) = packed.unpack_bool();
     assert_eq!((first, second), (true, true));
 }
@@ -20,6 +24,8 @@ fn test_bool_packer_u8_all_true() {
 fn test_bool_packer_u16() {
     let packed = u16::pack_bool(true, false);
     assert_eq!(packed, 0b10);
+    assert_eq!(packed.first_bool(), true);
+    assert_eq!(packed.second_bool(), false);
     let (first, second) = packed.unpack_bool();
     assert_eq!((first, second), (true, false));
 }
@@ -28,6 +34,8 @@ fn test_bool_packer_u16() {
 fn test_bool_packer_u32() {
     let packed = u32::pack_bool(true, false);
     assert_eq!(packed, 0b10);
+    assert_eq!(packed.first_bool(), true);
+    assert_eq!(packed.second_bool(), false);
     let (first, second) = packed.unpack_bool();
     assert_eq!((first, second), (true, false));
 }
@@ -36,6 +44,8 @@ fn test_bool_packer_u32() {
 fn test_bool_packer_u64() {
     let packed = u64::pack_bool(true, false);
     assert_eq!(packed, 0b10);
+    assert_eq!(packed.first_bool(), true);
+    assert_eq!(packed.second_bool(), false);
     let (first, second) = packed.unpack_bool();
     assert_eq!((first, second), (true, false));
 }
@@ -44,6 +54,8 @@ fn test_bool_packer_u64() {
 fn test_bool_packer_usize() {
     let packed = usize::pack_bool(true, false);
     assert_eq!(packed, 0b10);
+    assert_eq!(packed.first_bool(), true);
+    assert_eq!(packed.second_bool(), false);
     let (first, second) = packed.unpack_bool();
     assert_eq!((first, second), (true, false));
 }
@@ -52,6 +64,8 @@ fn test_bool_packer_usize() {
 fn test_bool_packer_i8() {
     let packed = i8::pack_bool(true, false);
     assert_eq!(packed, 0b10);
+    assert_eq!(packed.first_bool(), true);
+    assert_eq!(packed.second_bool(), false);
     let (first, second) = packed.unpack_bool();
     assert_eq!((first, second), (true, false));
 }
@@ -60,6 +74,8 @@ fn test_bool_packer_i8() {
 fn test_bool_packer_i16() {
     let packed = i16::pack_bool(true, false);
     assert_eq!(packed, 0b10);
+    assert_eq!(packed.first_bool(), true);
+    assert_eq!(packed.second_bool(), false);
     let (first, second) = packed.unpack_bool();
     assert_eq!((first, second), (true, false));
 }
@@ -68,6 +84,8 @@ fn test_bool_packer_i16() {
 fn test_bool_packer_i32() {
     let packed = i32::pack_bool(true, false);
     assert_eq!(packed, 0b10);
+    assert_eq!(packed.first_bool(), true);
+    assert_eq!(packed.second_bool(), false);
     let (first, second) = packed.unpack_bool();
     assert_eq!((first, second), (true, false));
 }
@@ -76,6 +94,8 @@ fn test_bool_packer_i32() {
 fn test_bool_packer_i64() {
     let packed = i64::pack_bool(true, false);
     assert_eq!(packed, 0b10);
+    assert_eq!(packed.first_bool(), true);
+    assert_eq!(packed.second_bool(), false);
     let (first, second) = packed.unpack_bool();
     assert_eq!((first, second), (true, false));
 }
@@ -84,6 +104,8 @@ fn test_bool_packer_i64() {
 fn test_bool_packer_isize() {
     let packed = isize::pack_bool(true, false);
     assert_eq!(packed, 0b10);
+    assert_eq!(packed.first_bool(), true);
+    assert_eq!(packed.second_bool(), false);
     let (first, second) = packed.unpack_bool();
     assert_eq!((first, second), (true, false));
 }

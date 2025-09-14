@@ -3,6 +3,8 @@ use num_packer::I32Packer;
 #[test]
 fn test_i32_packer_u64() {
     let packed = u64::pack_i32(-100, 1500000000);
+    assert_eq!(packed.first_i32(), -100);
+    assert_eq!(packed.second_i32(), 1500000000);
     let (first, second) = packed.unpack_i32();
     assert_eq!((first, second), (-100, 1500000000));
 }
@@ -10,6 +12,8 @@ fn test_i32_packer_u64() {
 #[test]
 fn test_i32_packer_u64_zero() {
     let packed = u64::pack_i32(0, 0);
+    assert_eq!(packed.first_i32(), 0);
+    assert_eq!(packed.second_i32(), 0);
     let (first, second) = packed.unpack_i32();
     assert_eq!((first, second), (0, 0));
 }
@@ -17,6 +21,8 @@ fn test_i32_packer_u64_zero() {
 #[test]
 fn test_i32_packer_u64_min() {
     let packed = u64::pack_i32(-2147483648, -2147483648);
+    assert_eq!(packed.first_i32(), -2147483648);
+    assert_eq!(packed.second_i32(), -2147483648);
     let (first, second) = packed.unpack_i32();
     assert_eq!((first, second), (-2147483648, -2147483648));
 }
@@ -24,6 +30,8 @@ fn test_i32_packer_u64_min() {
 #[test]
 fn test_i32_packer_u64_max() {
     let packed = u64::pack_i32(2147483647, 2147483647);
+    assert_eq!(packed.first_i32(), 2147483647);
+    assert_eq!(packed.second_i32(), 2147483647);
     let (first, second) = packed.unpack_i32();
     assert_eq!((first, second), (2147483647, 2147483647));
 }
@@ -32,6 +40,8 @@ fn test_i32_packer_u64_max() {
 #[test]
 fn test_i32_packer_usize() {
     let packed = usize::pack_i32(-100, 1500000000);
+    assert_eq!(packed.first_i32(), -100);
+    assert_eq!(packed.second_i32(), 1500000000);
     let (first, second) = packed.unpack_i32();
     assert_eq!((first, second), (-100, 1500000000));
 }
@@ -39,6 +49,8 @@ fn test_i32_packer_usize() {
 #[test]
 fn test_i32_packer_i64() {
     let packed = i64::pack_i32(-100, 1500000000);
+    assert_eq!(packed.first_i32(), -100);
+    assert_eq!(packed.second_i32(), 1500000000);
     let (first, second) = packed.unpack_i32();
     assert_eq!((first, second), (-100, 1500000000));
 }
@@ -47,6 +59,8 @@ fn test_i32_packer_i64() {
 #[test]
 fn test_i32_packer_isize() {
     let packed = isize::pack_i32(-100, 1500000000);
+    assert_eq!(packed.first_i32(), -100);
+    assert_eq!(packed.second_i32(), 1500000000);
     let (first, second) = packed.unpack_i32();
     assert_eq!((first, second), (-100, 1500000000));
 }

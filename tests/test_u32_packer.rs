@@ -7,6 +7,8 @@ fn test_u32_packer_u64() {
         packed,
         (3000000000u32 as u64) << 32 | (1500000000u32 as u64)
     );
+    assert_eq!(packed.first_u32(), 3000000000);
+    assert_eq!(packed.second_u32(), 1500000000);
     let (first, second) = packed.unpack_u32();
     assert_eq!((first, second), (3000000000, 1500000000));
 }
@@ -15,6 +17,8 @@ fn test_u32_packer_u64() {
 fn test_u32_packer_u64_min() {
     let packed = u64::pack_u32(0, 0);
     assert_eq!(packed, (0u32 as u64) << 32 | (0u32 as u64));
+    assert_eq!(packed.first_u32(), 0);
+    assert_eq!(packed.second_u32(), 0);
     let (first, second) = packed.unpack_u32();
     assert_eq!((first, second), (0, 0));
 }
@@ -26,6 +30,8 @@ fn test_u32_packer_u64_max() {
         packed,
         (4294967295u32 as u64) << 32 | (4294967295u32 as u64)
     );
+    assert_eq!(packed.first_u32(), 4294967295);
+    assert_eq!(packed.second_u32(), 4294967295);
     let (first, second) = packed.unpack_u32();
     assert_eq!((first, second), (4294967295, 4294967295));
 }
@@ -38,6 +44,8 @@ fn test_u32_packer_usize() {
         packed,
         (3000000000u32 as usize) << 32 | (1500000000u32 as usize)
     );
+    assert_eq!(packed.first_u32(), 3000000000);
+    assert_eq!(packed.second_u32(), 1500000000);
     let (first, second) = packed.unpack_u32();
     assert_eq!((first, second), (3000000000, 1500000000));
 }
@@ -49,6 +57,8 @@ fn test_u32_packer_i64() {
         packed,
         (3000000000u32 as i64) << 32 | (1500000000u32 as i64)
     );
+    assert_eq!(packed.first_u32(), 3000000000);
+    assert_eq!(packed.second_u32(), 1500000000);
     let (first, second) = packed.unpack_u32();
     assert_eq!((first, second), (3000000000, 1500000000));
 }
@@ -61,6 +71,8 @@ fn test_u32_packer_isize() {
         packed,
         (3000000000u32 as isize) << 32 | (1500000000u32 as isize)
     );
+    assert_eq!(packed.first_u32(), 3000000000);
+    assert_eq!(packed.second_u32(), 1500000000);
     let (first, second) = packed.unpack_u32();
     assert_eq!((first, second), (3000000000, 1500000000));
 }
