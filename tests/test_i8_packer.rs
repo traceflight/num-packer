@@ -29,7 +29,7 @@ fn test_i8_packer_u32() {
 }
 
 #[test]
-fn test_i8_packer_u32_min() {
+fn test_i8_packer_u32_zero() {
     let packed = u32::pack_i8(0, 0);
     let (first, second) = packed.unpack_i8();
     assert_eq!((first, second), (0, 0));
